@@ -3,8 +3,9 @@ import java.util.*;
 public class Game {
     public static void main(String[] args) {
         int lives = 6;
+        int tries = 0;
         ArrayList<String> wordsList = new ArrayList<>(List.of("elephant", "programming", "advanced",
-                "lawyer", "corupt", "masculine", "dictionary", "nightmare", "friendly", "ladder", "haircut",
+                "lawyer", "corrupt", "masculine", "dictionary", "nightmare", "friendly", "ladder", "haircut",
                 "relationship", "partner", "negotiation"));
         Random rnd = new Random();
         int index = rnd.nextInt(wordsList.size());
@@ -21,6 +22,7 @@ public class Game {
             boolean isLetterGuessed = false;
             System.out.println("Guess a letter!");
             char guessedLetter = sc.next().charAt(0);
+            tries++;
             for (int i = 0; i < hiddenWord.length(); i++) {
                 if (guessedLetter == hiddenWord.charAt(i)) {
                     stars[i] = guessedLetter;
@@ -38,6 +40,7 @@ public class Game {
             System.out.println(stars);
             if (!String.valueOf(stars).contains("*")){
                 System.out.println("Congrats, you guessed!");
+                System.out.println("Number of tries: " + tries);
                 break;
             }
         }
